@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Reader Controls</title>
+    <script>
+        function pauseAudio() {
+            fetch('/pause')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        console.log("Audio paused");
+                    }
+                });
+        }
+
+        function resumeAudio() {
+            fetch('/resume')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        console.log("Audio resumed");
+                    }
+                });
+        }
+    </script>
+</head>
+<body>
+    <h1>Reading PDF: {{ filename }}</h1>
+    <button onclick="pauseAudio()">Pause</button>
+    <button onclick="resumeAudio()">Resume</button>
+</body>
+</html>
